@@ -1,4 +1,4 @@
-# 🛒 QuickMarket
+# QuickMarket ![alt text](icons8-express-shopping-64.png) 
 
 An eCommerce platform built with Django. Browse products and shop effortlessly!
 

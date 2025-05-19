@@ -7,7 +7,8 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm, UpdateUserForm, ChangePasswordForm, UserInfoForm
 from django import forms
 from django.db.models import Q
-
+import json
+from cart.cart import Cart
 def search(request):
 	# Determine if they filled out the form
 	if request.method == "POST":
@@ -134,6 +135,16 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            current_user = Profile.objects.get(user__id=request.user.id)
+            saved_cart = current_user.old_cart
+            
+            if saved_cart:
+                converted_cart = json.loads(saved_cart)
+                cart = Cart(request)
+                
+                for key, value in converted_cart.items():
+                    cart.db_add(product=key, quantity=value)
+            
             messages.success(request, "You have been logged in successfully!")
             return redirect('home')
         else:
@@ -156,21 +167,22 @@ def logout_user(request):
 
 
 def register_user(request):
-    form = SignUpForm()
-    if request.method == 'POST':
+    form = SignUpForm() 
+    if request.method == "POST":
         form = SignUpForm(request.POST)
+        print(form.is_valid())
         if form.is_valid():
             form.save()
-            username = request.POST['username']
-            password = request.POST['password']
-            # login the user after registration
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+			# log in user
             user = authenticate(username=username, password=password)
             login(request, user)
-            messages.success(request, "Username Created - Please Fill Out Your User Info Below...")
+            messages.success(request, ("Username Created - Please Fill Out Your User Info Below..."))
             return redirect('update_info')
         else:
-            messages.error(request, "There was an error in registering please try again.")
+            messages.success(request, ("Whoops! There was a problem Registering, please try again..."))
             return redirect('register')
     else:
-        return render(request, 'register.html', {'form': form})
+        return render(request, 'register.html', {'form':form})
 
