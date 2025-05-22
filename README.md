@@ -1,4 +1,6 @@
-# QuickMarket ![alt text](icons8-shopping-bag-35.png)  ![alt text](icons8-express-shopping-35.png) 
+# QuickMarket 🛒 🛍️
+
+### 🌐 Live Website Link :- https://quickmarket-production-8a4e.up.railway.app
 
 An eCommerce platform built with Django. Browse products and shop effortlessly!
 
@@ -19,7 +21,7 @@ source venv/bin/activate     # On Windows: venv\Scripts\activate
 
 ### Step 3: Install Django
 ```bash
-pip install django
+pip install -r requirements.txt
 ```
 
 ### Step 4: Migrate the Database
