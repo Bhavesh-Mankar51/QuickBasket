@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-&8lt2r5oy6^9_+^4u-gi^n4+^gly*uxym8c05ya_xhd28t%m6w
 DEBUG = True
 
 ALLOWED_HOSTS = ['quickmarket-production.up.railway.app', 'http://quickmarket-production.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['quickmarket-production.up.railway.app', 'http://quickmarket-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['http://quickmarket-production.up.railway.app']
 
 # Application definition
 
