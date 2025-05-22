@@ -14,8 +14,8 @@ SECRET_KEY = 'django-insecure-&8lt2r5oy6^9_+^4u-gi^n4+^gly*uxym8c05ya_xhd28t%m6w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['quickmarket-production-8a4e.up.railway.app', 'http://quickmarket-production-8a4e.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['http://quickmarket-production-8a4e.up.railway.app']
+ALLOWED_HOSTS = ['quickmarket-production-8a4e.up.railway.app', 'https://quickmarket-production-8a4e.up.railway.app', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://quickmarket-production-8a4e.up.railway.app']
 
 # Application definition
 
